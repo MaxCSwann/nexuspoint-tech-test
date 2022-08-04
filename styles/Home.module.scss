@@ -1,0 +1,64 @@
+@import "./variables.scss";
+
+.container{
+  background-color: $light-0;
+  display: grid;
+  min-height: 100vh;
+  grid-template-areas: 
+    "nav nav"
+    "banner banner"
+    "sidebar main"
+    "footer footer";
+  grid-template-columns: minmax(min-content, 250px) auto;
+  grid-template-rows: auto auto 1fr auto;
+  @media (max-width: $screen-tablet){
+    grid-template-areas: 
+      "nav"
+      "main"
+      "footer";
+    grid-template-columns: 1fr;
+    grid-template-rows: auto 1fr auto;
+  }
+  & > *{
+    padding: 0 2rem;
+  }
+  .navbar{
+    grid-area: nav;
+    background-color: $light-0;
+  }
+  .finance_banner{
+    grid-area: banner;
+    background-color: $dark-2;
+    border-radius: 0 0 0 2rem;
+    @media (max-width: $screen-tablet){
+      display: none;
+    }
+  }
+  .search_sidebar{
+    grid-area: sidebar;
+    @media (max-width: $screen-tablet){
+      display: none;
+    }
+  }
+  .listing_feed{
+    grid-area: main;
+    .listing_grid{
+      display:grid;
+      padding-bottom: 2rem;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 15px;
+      @media (max-width: $screen-tablet){
+        grid-template-columns: repeat(2, 1fr);
+      }
+      @media (max-width: $screen-mobile){
+        grid-template-columns: 1fr;
+      }
+      
+    }
+  }
+  .footer{
+    grid-area: footer;
+    background-color: $dark-2;
+    border-radius: 0 2rem 0 0;
+  }
+}

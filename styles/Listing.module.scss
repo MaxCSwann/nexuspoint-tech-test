@@ -1,0 +1,101 @@
+@import "./variables.scss";
+.card{
+    background-color: $light-0;
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+    .gallery{
+        width: 100%;
+        position: relative;
+        img{
+            width: 100%;
+            height: auto;
+        }
+        .listing_tag_container{
+            position: absolute;
+            top: 0.625rem;
+            left: 0.625rem;
+        }
+        .spec_list_container{
+            position: absolute;
+            bottom: 0.625rem;
+            left: 0.625rem;
+            width: calc(100% - 1.3rem);
+            overflow-x: scroll;
+            padding: 2px 0;
+            .spec_list{
+                gap: 0.3125rem;
+                display: flex;
+            }
+            &::-webkit-scrollbar {
+                width:  20px;
+                height: 0.3rem;
+            }
+            &::-webkit-scrollbar-track {
+                background: transparent;  
+            }
+            &::-webkit-scrollbar-thumb {
+                background: rgb(40, 35, 56, 0.7);
+                border-radius: 999px;
+            }
+        }
+    }
+    .details{
+        padding: 0.625rem;
+        position: relative;
+        .name{
+            font-weight: 400;
+            margin: 0;
+            font-size: 1rem;
+            line-height: 1.5rem;
+        }
+        .derivative{
+            font-weight: 400;
+            margin: 0;
+            font-size: 0.75rem;
+            line-height: 1.1rem;
+            color: $grey;
+        }
+        .card_footer{
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            .pricing_button{
+                display: block;
+                padding-top: 0.5rem;
+                .price{
+                    margin: 0;
+                    font-size: 0.75rem;
+                    span{
+                        font-size: 1.1rem;
+                        font-weight: 500;
+                    }
+                }
+                .contract_type{
+                    margin: 0;
+                }
+            }
+            .view_button{
+                border-radius: 1rem;
+                padding: 0.75rem 1.5rem;
+                background-color: $brand-primary;
+                border: none;
+                color: $light-0;
+                cursor: pointer;
+                transition: background-color 0.3s ease-out;
+                &:hover{
+                    background-color: $brand-primary-darker;
+                }
+            }
+        }
+        .favourite{
+            background: none;
+            border: none;
+            padding: 0;
+            position: absolute;
+            top: 0.625rem;
+            right: 0.625rem;
+            cursor: pointer;
+        }
+    }
+}
