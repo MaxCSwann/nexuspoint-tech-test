@@ -2,63 +2,73 @@
 
 .container{
   background-color: $light-0;
-  display: grid;
+  display: flex;
+  flex-direction: column;
   min-height: 100vh;
-  grid-template-areas: 
-    "nav nav"
-    "banner banner"
-    "sidebar main"
-    "footer footer";
-  grid-template-columns: minmax(min-content, 250px) auto;
-  grid-template-rows: auto auto 1fr auto;
-  @media (max-width: $screen-tablet){
-    grid-template-areas: 
-      "nav"
-      "main"
-      "footer";
-    grid-template-columns: 1fr;
-    grid-template-rows: auto 1fr auto;
-  }
-  & > *{
+  header{
     padding: 0 2rem;
-  }
-  .navbar{
-    grid-area: nav;
-    background-color: $light-0;
-  }
-  .finance_banner{
-    grid-area: banner;
-    background-color: $dark-2;
-    border-radius: 0 0 0 2rem;
-    @media (max-width: $screen-tablet){
-      display: none;
+    & > h1 sup{
+        color: $brand-primary;
+        font-size: 0.5em;
+    }
+    .main_navbar{
+      background-color: $light-0;
     }
   }
-  .search_sidebar{
-    grid-area: sidebar;
-    @media (max-width: $screen-tablet){
-      display: none;
-    }
-  }
-  .listing_feed{
-    grid-area: main;
-    .listing_grid{
-      display:grid;
-      padding-bottom: 2rem;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+  main{
+    display: flex;
+    flex-direction: column;
+    .finance_banner{
+      padding: 0 2rem;
+      color: $light-0;
+      background-color: $dark-2;
+      border-radius: 0 0 0 2rem;
       @media (max-width: $screen-tablet){
-        grid-template-columns: repeat(2, 1fr);
+        display: none;
       }
-      @media (max-width: $screen-mobile){
-        grid-template-columns: 1fr;
+    }
+    .main_content{
+      padding: 2rem;
+      width: 100vw;
+      max-width: 1440px;
+      margin: auto;
+      display: flex;
+      gap: 50px;
+      .search_sidebar{
+        width: 300px;
+        flex-shrink: 0;
+        @media (max-width: $screen-tablet){
+          display: none;
+        }
+        
       }
-      
+      .listing_feed{
+        width: auto;
+        & > h1{
+          position: absolute;
+          top: -9999px;
+          left: -9999px;
+        }
+        .listing_grid{
+          display:grid;
+          padding-bottom: 2rem;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 15px;
+          @media (max-width: $screen-tablet){
+            grid-template-columns: repeat(2, 1fr);
+          }
+          @media (max-width: $screen-mobile){
+            grid-template-columns: 1fr;
+          }
+          
+        }
+      }
     }
   }
   .footer{
-    grid-area: footer;
     background-color: $dark-2;
     border-radius: 0 2rem 0 0;
+    color: $light-0;
+    padding: 0 2rem;
   }
 }

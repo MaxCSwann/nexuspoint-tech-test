@@ -1,6 +1,7 @@
 import styles from '../styles/Listing.module.scss'
 import utils from '../styles/utils.module.scss'
 import Image from 'next/future/image'
+import Link from 'next/link'
 import Tag from './Tag'
 import { useState, useEffect } from 'react';
 import { INTERNALS } from 'next/dist/server/web/spec-extension/request';
@@ -45,7 +46,7 @@ export default function Listing({data, order}){
     }, [])
 
     return(
-        <div className={styles.card}>
+        <article className={styles.card}>
             <div className={styles.gallery}>
                 <Image
                     src={data.media_urls[0].medium}
@@ -68,16 +69,18 @@ export default function Listing({data, order}){
                 </div>
             </div>
             <div className={styles.details}>
-                <h5 className={styles.name}>{name}</h5>
-                <h6 className={styles.derivative}>{derivative}</h6>
+                <h1 className={styles.name}>{name}</h1>
+                <p className={styles.derivative}>{derivative}</p>
                 <div class={styles.card_footer}>
-                    <a className={styles.pricing_button}>
+                    <a className={styles.pricing_button} title="Calculate your finance">
                         <p className={styles.price}><span>£{monthly_price}</span>/mo (pcp)</p>
                         <p className={styles.contract_type}>£{data.price}</p>
                     </a>
-                    <a className={styles.view_button}>
-                        View
-                    </a>
+                    <Link href="/">
+                        <a className={styles.view_button} title={`View this ${name}`}>
+                            View
+                        </a>
+                    </Link>
                 </div>
                 <button className={styles.favourite} onClick={updateFavourite}>
                 {
@@ -93,6 +96,6 @@ export default function Listing({data, order}){
 
                 </button>
             </div>
-        </div>
+        </article>
     )
 }
