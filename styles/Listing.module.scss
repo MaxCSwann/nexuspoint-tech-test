@@ -2,14 +2,43 @@
 .card{
     background-color: $light-0;
     border-radius: 1rem;
-    overflow: hidden;
     box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.15);
+    overflow: hidden;
+    @media(max-width: $screen-mobile){
+        border-radius: 0;
+        box-shadow: none;
+    }
     .gallery{
         width: 100%;
         position: relative;
-        img{
-            width: 100%;
-            height: auto;
+        .image_container{
+            img{
+                width: 100%;
+                height: auto;
+                @media(max-width: $screen-mobile){
+                    border-radius: 1rem;
+                }
+            }
+            @media(max-width: $screen-mobile){
+                display: flex;
+                overflow-x: auto;
+                gap: 2%;
+                &:after{
+                    content: "";
+                    position: absolute;
+                    height: 100%;
+                    width: 5%;
+                    top: 0;
+                    right: 0;
+                    background: rgba(255, 255, 255, 0.3);
+                }
+                img{
+                    width: 30%;
+                }
+                &::-webkit-scrollbar {
+                    height: 0rem;
+                }
+            }
         }
         .listing_tag_container{
             position: absolute;
@@ -43,23 +72,71 @@
     .details{
         padding: 0.625rem;
         position: relative;
-        .name{
-            font-weight: 400;
-            margin: 0;
-            font-size: 1rem;
-            line-height: 1.5rem;
+        .card_footer_top{
+            display: flex;
+            align-items: start;
+            gap: 10px;
+            .description{
+                margin-right: auto;
+                .name{
+                    font-weight: 400;
+                    margin: 0;
+                    font-size: 1rem;
+                    line-height: 1.5rem;
+                }
+                .derivative{
+                    font-weight: 400;
+                    margin: 0;
+                    font-size: 0.75rem;
+                    line-height: 1.1rem;
+                    color: $grey;
+                }
+            }
+            .favourite{
+                background: none;
+                border: none;
+                padding: 0;
+                cursor: pointer;
+                height: 1.5rem;
+                margin-top: -2px;
+                svg{
+                    height: 100%;
+                    width: auto;
+                }
+            }
         }
-        .derivative{
-            font-weight: 400;
-            margin: 0;
-            font-size: 0.75rem;
-            line-height: 1.1rem;
-            color: $grey;
-        }
-        .card_footer{
+        .card_footer_bottom{
             display: flex;
             justify-content: space-between;
             align-items: end;
+            @media (max-width: $screen-mobile) {
+                justify-content: start;
+                align-items: start;
+            }
+            .spec_list{
+                display: flex;
+                align-items: center;
+                list-style: none;
+                padding: 0;
+                width: 50%;
+                flex-shrink: 0;
+                flex-wrap: wrap;
+                color: $grey;
+                margin: 0;
+                padding-top: 0.5rem;
+                &:empty{
+                    display: none;
+                }
+                li{
+                    span{
+                        padding-right: 0.5rem;
+                    }
+                    &:not(:last-child):after{
+                        content: "|";
+                        padding-right: 0.5rem;
+                    }
+                }
+            }
             .pricing_button{
                 display: block;
                 padding-top: 0.5rem;
@@ -75,6 +152,7 @@
                     margin: 0;
                 }
             }
+            
             .view_button{
                 border-radius: 1rem;
                 padding: 0.75rem 1.5rem;
@@ -88,14 +166,6 @@
                 }
             }
         }
-        .favourite{
-            background: none;
-            border: none;
-            padding: 0;
-            position: absolute;
-            top: 0.625rem;
-            right: 0.625rem;
-            cursor: pointer;
-        }
+        
     }
 }
