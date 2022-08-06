@@ -16,21 +16,21 @@ export default function Home(props) {
       </Head>
       <header>
         <h1>CarDealer <sup>UK</sup></h1>
-        <nav className={styles.main_navbar}>
+        <nav className={styles.main_navbar} title="Main Navigation">
         </nav>
       </header>
       <main>
-        <aside className={styles.finance_banner}>
+        <aside className={styles.finance_banner} title="Finance Banner">
           <h1>Finance Banner</h1>
         </aside>
         <div className={styles.main_content}>
-          <section className={styles.search_sidebar}>
+          <section className={styles.search_sidebar} title="Filters for Listing Feed">
             <h1>Filters</h1>
             <nav>
               <Button label={"Make"}/>
             </nav>
           </section>
-          <section className={styles.listing_feed}>
+          <section className={styles.listing_feed} title="Listing Feed">
             <h1>Listing Feed</h1>
             <div className={styles.listing_grid}>
               {

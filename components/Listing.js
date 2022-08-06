@@ -46,7 +46,7 @@ export default function Listing({data, order}){
     }, [])
 
     return(
-        <article className={styles.card}>
+        <article className={styles.card} title={name}>
             <div className={styles.gallery}>
                 <Image
                     src={data.media_urls[0].medium}
@@ -82,7 +82,7 @@ export default function Listing({data, order}){
                         </a>
                     </Link>
                 </div>
-                <button className={styles.favourite} onClick={updateFavourite}>
+                <button className={styles.favourite} onClick={updateFavourite} title="Add to favourites">
                 {
                     favourite ?
                         <svg width="18" height="17" viewBox="0 0 18 17" fill="none" xmlns="http://www.w3.org/2000/svg">
